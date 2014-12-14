@@ -1,0 +1,26 @@
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\bin\Debug\ContactsClient.exe.config
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.csprojResolveAssemblyReference.cache
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Properties.Resources.resources
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.csproj.GenerateResource.Cache
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\bin\Debug\ContactsClient.exe
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\bin\Debug\ContactsClient.pdb
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\bin\Debug\Newtonsoft.Json.DLL
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.exe
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.pdb
+c:\users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.ContactInterface.resources
+C:\Users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.ContactUpdateForm.resources
+C:\Users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Connect.resources
+C:\Users\foo\documents\visual studio 2012\Projects\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Contacts.resources
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\bin\Debug\ContactsClient.exe.config
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.exe
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.pdb
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\bin\Debug\ContactsClient.exe
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.csprojResolveAssemblyReference.cache
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Connect.resources
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.ContactInterface.resources
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Contacts.resources
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Properties.Resources.resources
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.ContactUpdateForm.resources
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.csproj.GenerateResource.Cache
+C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\bin\Debug\ContactsClient.pdb

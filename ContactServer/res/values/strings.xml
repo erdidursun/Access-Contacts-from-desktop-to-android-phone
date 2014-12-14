@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ContactServer</string>
+    <string name="portlabel">Port:</string>
+    <string name="action_settings">Settings</string>
+</resources>

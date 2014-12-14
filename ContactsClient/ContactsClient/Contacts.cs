@@ -41,7 +41,8 @@ namespace ContactsClient
             }
             else
             {
-                this.Text = "Connection Failed. ";
+                MessageBox.Show( "Connection Failed. ");
+                this.Close();
             }
         }
         void ShowContact()
@@ -62,9 +63,8 @@ namespace ContactsClient
                     this.Invoke(AddContact, cI);
                 }
             }
-            tmp = contacts;
-             MessageBox.Show("Contacts Complete.");
-             this.Close();
+             tmp = contacts;
+            this.Text="Contacts Complete.";             
         }
         void Remove()
         {

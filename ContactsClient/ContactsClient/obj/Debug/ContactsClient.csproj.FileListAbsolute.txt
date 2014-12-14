@@ -24,3 +24,16 @@ C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\C
 C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.ContactUpdateForm.resources
 C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\obj\Debug\ContactsClient.csproj.GenerateResource.Cache
 C:\Users\foo\Documents\GitHub\Contacts\ContactsClient\ContactsClient\bin\Debug\ContactsClient.pdb
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\bin\Debug\ContactsClient.exe.config
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.exe
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.pdb
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\bin\Debug\ContactsClient.exe
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\bin\Debug\ContactsClient.pdb
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.csprojResolveAssemblyReference.cache
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Connect.resources
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.ContactInterface.resources
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Contacts.resources
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.Properties.Resources.resources
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.ContactUpdateForm.resources
+C:\Users\foo\Documents\GitHub\Access-Contacts-from-desktop-to-android-phone\ContactsClient\ContactsClient\obj\Debug\ContactsClient.csproj.GenerateResource.Cache

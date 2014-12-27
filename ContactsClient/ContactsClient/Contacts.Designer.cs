@@ -105,9 +105,9 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(46, 19);
+            this.textBox1.Location = new System.Drawing.Point(112, 19);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(241, 20);
+            this.textBox1.Size = new System.Drawing.Size(175, 20);
             this.textBox1.TabIndex = 3;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -116,11 +116,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Demi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(6, 21);
+            this.label2.Location = new System.Drawing.Point(51, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 17);
+            this.label2.Size = new System.Drawing.Size(55, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Find:";
+            this.label2.Text = "Search :";
             // 
             // panel2
             // 

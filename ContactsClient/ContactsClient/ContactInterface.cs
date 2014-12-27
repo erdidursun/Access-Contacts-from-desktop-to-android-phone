@@ -33,10 +33,10 @@ namespace ContactsClient
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Silmek istediğinizden emin misiniz?", "Onay Kutusu", MessageBoxButtons.YesNoCancel);
+            DialogResult dr = MessageBox.Show("Are you sure?", "Delete Operation", MessageBoxButtons.YesNoCancel);
             if (dr == DialogResult.Yes)
             {
-               Client.WriteData(Utilities.deleteContactString(Id));                
+              Contacts.m_client.WriteData(Utilities.deleteContactString(Id));                
             }
 
         }

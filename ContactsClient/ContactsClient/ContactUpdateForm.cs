@@ -30,7 +30,7 @@ namespace ContactsClient
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Client.WriteData(Utilities.updateContactString(new Contact { id = Id, Name = textBox1.Text, phoneNumbers = textBox2.Text }));
+            Contacts.m_client.WriteData(Utilities.updateContactString(new Contact { id = Id, Name = textBox1.Text, phoneNumbers = textBox2.Text }));
             name = textBox1.Text;
             Phone = textBox2.Text;
             this.Close();

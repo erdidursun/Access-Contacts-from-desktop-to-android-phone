@@ -13,14 +13,15 @@ namespace ContactsClient
 {
     public partial class Contacts : Form
     {
-        public List<Contact> contacts = new List<Contact>();
-        public List<Contact> tmp = new List<Contact>();
+        public List<Contact> m_contacts = new List<Contact>();
+        public List<Contact> m_tmp = new List<Contact>();
+        public static Client m_client;
         delegate void AddContactHandler(Control c);
         delegate void RemoveContactsHandler();
         RemoveContactsHandler RemoveContacts;
-        Thread t;
+        Thread m_thread;
         AddContactHandler AddContact;
-       
+
         public Contacts()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace ContactsClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Client.GetContacts();           
+            m_client.GetContacts();
         }
 
         void client_Connected(bool success)
@@ -36,12 +37,12 @@ namespace ContactsClient
             if (success)
             {
                 this.Text = "Connection Has Been Established ";
-                Client.GetContacts();
+                m_client.GetContacts();
 
             }
             else
             {
-                MessageBox.Show( "Connection Failed. ");
+                MessageBox.Show("Connection Failed. ");
                 this.Close();
             }
         }
@@ -49,8 +50,8 @@ namespace ContactsClient
         {
             int y = 2;
             this.Text = "Contacts Loading....";
-            this.Invoke(RemoveContacts);           
-            foreach (var c in tmp)
+            this.Invoke(RemoveContacts);
+            foreach (var c in m_tmp)
             {
                 ContactInterface cI = new ContactInterface();
                 if (c != null)
@@ -63,8 +64,8 @@ namespace ContactsClient
                     this.Invoke(AddContact, cI);
                 }
             }
-             tmp = contacts;
-            this.Text="Contacts Complete.";             
+            m_tmp = m_contacts;
+            this.Text = "Contacts Complete.";
         }
         void Remove()
         {
@@ -80,26 +81,23 @@ namespace ContactsClient
         }
         void StartThread()
         {
-            if (t != null)
-            {
-                t.Abort();
-                t.DisableComObjectEagerCleanup();
+            if (m_thread != null)
+                m_thread.Abort();
 
-            }
-            t = new Thread(new ThreadStart(ShowContact));
-            t.SetApartmentState(ApartmentState.MTA);
-            t.Start();
+            m_thread = new Thread(new ThreadStart(ShowContact));
+            m_thread.SetApartmentState(ApartmentState.MTA);
+            m_thread.Start();
         }
-        void ContactAdded(List<Contact> contacts)
-        {     
-            tmp = this.contacts = contacts.OrderBy(p => p.Name).ToList<Contact>();
+        void ContactAdded(List<Contact> m_contacts)
+        {
+            m_tmp = this.m_contacts = m_contacts.OrderBy(p => p.Name).ToList<Contact>();
             StartThread();
         }
         void ContactDelete(string id)
         {
-            int index = contacts.FindIndex(p => p.id.Equals(id));
-            string name = contacts[index].Name;
-            contacts.RemoveAt(contacts.FindIndex(p => p.id.Equals(id)));
+            int index = m_contacts.FindIndex(p => p.id.Equals(id));
+            string name = m_contacts[index].Name;
+            m_contacts.RemoveAt(m_contacts.FindIndex(p => p.id.Equals(id)));
             MessageBox.Show(String.Format("{0} is Deleted", name), "Delete Operation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             StartThread();
@@ -107,7 +105,7 @@ namespace ContactsClient
         }
         void ContactUptade(string id, string name, string phone)
         {
-            contacts[contacts.FindIndex(p => p.id == id)] = new Contact() { id = id, Name = name, phoneNumbers = phone };
+            m_contacts[m_contacts.FindIndex(p => p.id == id)] = new Contact() { id = id, Name = name, phoneNumbers = phone };
             MessageBox.Show(String.Format("{0} is Updated", name), "Update Operation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             StartThread();
@@ -116,38 +114,38 @@ namespace ContactsClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            m_client = new Client();
             AddContact = new AddContactHandler(Add);
             RemoveContacts = new RemoveContactsHandler(Remove);
             CheckForIllegalCrossThreadCalls = false;
-            Client.Connect();
-            Client.Connected += client_Connected;
-            Client.ContactsAdded += ContactAdded;
-            Client.ContactDelete += ContactDelete;
-            Client.ContactUptade += ContactUptade;
+            m_client.Connect();
+            m_client.Connected += client_Connected;
+            m_client.ContactsAdded += ContactAdded;
+            m_client.ContactDelete += ContactDelete;
+            m_client.ContactUptade += ContactUptade;
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
             if (comboBox1.SelectedIndex == 0)
             {
-                tmp = tmp.Where<Contact>(p => tmp.Where(t => t.Name == p.Name).Count() > 1).ToList();
-                if (tmp.Count == 0)
+                m_tmp = m_tmp.Where<Contact>(p => m_tmp.Where(t => t.Name == p.Name).Count() > 1).ToList();
+                if (m_tmp.Count == 0)
                 {
                     MessageBox.Show("No records were found matching");
                 }
                 else
-                StartThread();
+                    StartThread();
             }
             else if (comboBox1.SelectedIndex == 1)
             {
-                tmp = tmp.Where<Contact>(p => tmp.Where(t => t.phoneNumbers == p.phoneNumbers).Count() > 1).ToList();
-                if (tmp.Count == 0)
+                m_tmp = m_tmp.Where<Contact>(p => m_tmp.Where(t => t.phoneNumbers == p.phoneNumbers).Count() > 1).ToList();
+                if (m_tmp.Count == 0)
                 {
                     MessageBox.Show("No records were found matching");
                 }
                 else
-                StartThread();
+                    StartThread();
             }
         }
 
@@ -157,7 +155,7 @@ namespace ContactsClient
                 ShowContact();
             else
             {
-                tmp = tmp.Where(p => p.Name.ToLower().Contains(textBox1.Text.ToLower()) || p.phoneNumbers.Contains(textBox1.Text)).ToList<Contact>();
+                m_tmp = m_tmp.Where(p => p.Name.ToLower().Contains(textBox1.Text.ToLower()) || p.phoneNumbers.Contains(textBox1.Text)).ToList<Contact>();
                 StartThread();
             }
 

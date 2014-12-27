@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 namespace ContactsClient
 {
-    public static class Client
+    public class Client
     {
         #region variables
-        private static TcpClient client;
-        private static Socket clientSocket;
-        private static int receiveDataSize = 20000;
-        static byte[] receiveData;
-        static byte[] sendData;
-        static bool readContact = false;
-        static string json = "";
+        private TcpClient m_client;
+        private Socket m_clientSocket;
+        private int m_m_receiveDataSize = 20000;
+        byte[] m_receiveData;
+        byte[] m_sendData;
+        bool m_readContact = false;
+        string m_json = "";
         #endregion
         #region properties
         public static string IpAddress { get; set; }
@@ -25,41 +25,41 @@ namespace ContactsClient
         #endregion
         #region events
         public delegate void ConnectHandler(bool success);
-        public static event ConnectHandler Connected;
+        public event ConnectHandler Connected;
         public delegate void ContactsAddedHandler(List<Contact> contacts);
-        public static event ContactsAddedHandler ContactsAdded;
+        public event ContactsAddedHandler ContactsAdded;
         public delegate void ContactUptadedHandler(string id, string name, string phone);
-        public static event ContactUptadedHandler ContactUptade;
+        public event ContactUptadedHandler ContactUptade;
         public delegate void ContactDeletedHandler(string id);
-        public static event ContactDeletedHandler ContactDelete;
+        public event ContactDeletedHandler ContactDelete;
         #endregion
         #region functions
-        public static void GetContacts()
+        public void GetContacts()
         {
-            while (!client.Connected) { }
+            while (!m_client.Connected) { }
             WriteData(Utilities.getAllContactString());
         }
-        public static void Connect()
+        public void Connect()
         {
-            client = new TcpClient();
-            client.BeginConnect(IpAddress, Port, ConnectionComplete, client);
+            m_client = new TcpClient();
+            m_client.BeginConnect(IpAddress, Port, ConnectionComplete, m_client);
         }
-        static void ReceiveData()
+        void ReceiveData()
         {
-            receiveData = new byte[receiveDataSize];
-            clientSocket.BeginReceive(receiveData, 0, receiveDataSize, SocketFlags.None, new AsyncCallback(ReceiveComplete), clientSocket);
+            m_receiveData = new byte[m_m_receiveDataSize];
+            m_clientSocket.BeginReceive(m_receiveData, 0, m_m_receiveDataSize, SocketFlags.None, new AsyncCallback(ReceiveComplete), m_clientSocket);
         }
-        static void InspectData(string data)
+        void InspectData(string data)
         {
-            if (readContact)
+            if (m_readContact)
             {
                 if (data.Equals(ServerCommandType.EndContact.ToString()))
                 {
-                    ContactsAdded((List<Contact>)JsonConvert.DeserializeObject(json, typeof(List<Contact>)));
-                    readContact = false;
+                    ContactsAdded((List<Contact>)JsonConvert.DeserializeObject(m_json, typeof(List<Contact>)));
+                    m_readContact = false;
                 }
                 else
-                    json = String.Concat(json, data);
+                    m_json = String.Concat(m_json, data);
             }
             else
             {
@@ -72,15 +72,15 @@ namespace ContactsClient
             }
             if (data.Equals(ServerCommandType.StartContact.ToString()))
             {
-                readContact = true;
+                m_readContact = true;
             }
         }
-        public static void WriteData(string data)
+        public void WriteData(string data)
         {
             try
             {
-                sendData = Encoding.UTF8.GetBytes(data);
-                clientSocket.BeginSend(sendData, 0, sendData.Length, SocketFlags.None, new AsyncCallback(WriteComplete), clientSocket);
+                m_sendData = Encoding.UTF8.GetBytes(data);
+                m_clientSocket.BeginSend(m_sendData, 0, m_sendData.Length, SocketFlags.None, new AsyncCallback(WriteComplete), m_clientSocket);
             }
             catch (Exception ex)
             {
@@ -91,13 +91,13 @@ namespace ContactsClient
         }
         #endregion
         #region callbacks
-        static void ConnectionComplete(IAsyncResult result)
+        void ConnectionComplete(IAsyncResult result)
         {
             try
             {
                 TcpClient Client = (TcpClient)result.AsyncState;
                 Client.EndConnect(result);
-                clientSocket = Client.Client;
+                m_clientSocket = Client.Client;
                 ReceiveData();
                 Connected(true);
             }
@@ -107,14 +107,14 @@ namespace ContactsClient
             }
 
         }
-        static void ReceiveComplete(IAsyncResult result)
+        void ReceiveComplete(IAsyncResult result)
         {
             try
             {
-                Socket client = (Socket)result.AsyncState;
-                int dataCount = client.EndReceive(result);
+                Socket m_client = (Socket)result.AsyncState;
+                int dataCount = m_client.EndReceive(result);
                 if (dataCount > 0)
-                    InspectData(Encoding.UTF8.GetString(receiveData, 0, dataCount));
+                    InspectData(Encoding.UTF8.GetString(m_receiveData, 0, dataCount));
             }
             catch (Exception ex)
             {
@@ -123,10 +123,10 @@ namespace ContactsClient
             }
             ReceiveData();
         }
-        static void WriteComplete(IAsyncResult result)
+        void WriteComplete(IAsyncResult result)
         {
-            Socket client = (Socket)result.AsyncState;
-            client.EndSend(result);
+            Socket m_client = (Socket)result.AsyncState;
+            m_client.EndSend(result);
         }
         #endregion
     }
